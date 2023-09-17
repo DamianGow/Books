@@ -64,6 +64,27 @@ public class SearchandSort {
         
         return topten;
     }
+    
+    public static ArrayList<Integer> sortby() {
+        LinkedList<Book> books = csv.getAllBooksLinked();
+        
+        Comparator<Book> ratingComparator = (book1, book2) -> Double.compare(book2.getYear(), book1.getYear());
+        Collections.sort(books, ratingComparator);
+        
+        ArrayList<Integer> topten = new ArrayList<Integer>(); 
+        
+        for (int i = 0; i < Math.min(10, books.size()); i++) {
+            Book book = books.get(i);
+            int bookNumtoAdd = book.getBooknum();
+            bookNumtoAdd -= 1;
+            topten.add(bookNumtoAdd);
+            
+            
+           // System.out.println("Book #" + book.getBooknum() + " Rating: " + book.getRating());
+        }
+        
+        return topten;
+    }
 }
 
     
